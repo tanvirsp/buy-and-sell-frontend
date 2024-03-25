@@ -1,0 +1,41 @@
+.category-section {
+    background-color: #FBFBFB;
+    padding: 45px;
+    border-radius: 30px;
+    margin-top: -75px;
+    /* text-align: center; */
+    box-shadow:  0 0 7px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.section-title {
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section-title span {
+    font-weight: 600;
+}
+
+.category {
+    display: flex;
+    background-color: white;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    box-shadow:  0 0 7px 0 rgba(98, 97, 97, 0.099);
+    margin-top: 20px
+
+}
+
+.category img {
+    width: 50px;
+    margin-right: 20px
+}
+
+.ad-count {
+    color: rgb(126, 126, 126)
+}

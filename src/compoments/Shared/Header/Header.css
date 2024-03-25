@@ -1,0 +1,35 @@
+header {
+    background-color: #406984;
+    padding: 25px 20px !important;
+    border-radius: 30px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 9999;
+    position: sticky;
+    top: 0;
+    
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+nav ul li a {
+    padding: 7px 15px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.btn-post {
+    background-color: #805FA8;
+    padding: 10px 25px;
+    border-radius: 20px;
+}

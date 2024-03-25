@@ -1,0 +1,45 @@
+.hero-section {
+    background-image: linear-gradient(#18374dc2, #18374dc2), url('../../../assets/images/bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 800px;
+    margin-top: -200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+
+.hero-info {
+    width: 700px ;
+    margin-top: 150px;
+}
+
+.hero-info  h1 {
+    color: white;
+    font-size: 50px;
+    font-weight: 200;
+    line-height: 65px;
+}
+
+.hero-info  h1 span {
+    font-weight: 600;
+    font-size: 75px;
+}
+
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar svg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 50px;
+    color: #805FA8
+}
