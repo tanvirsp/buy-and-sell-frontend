@@ -9,8 +9,9 @@ const StartMarketing = () => {
                     <img className='img-fluid'  src={eComImg} alt="ecom" />
                 </div>
                 <div className='w-50'>
-                    <h5>Start making money!</h5>
-                    <p>Do you have something to sell? Post your first ad and start making money!</p>
+                    <h3 className='section-title'>Start making <span>money!</span> </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, dolores. Alias et neque laboriosam dolor ratione itaque at laborum ut.</p>
+                    <button className='btn-post mt-3'>Post Your Ad</button>
                 </div>
             </div>
             

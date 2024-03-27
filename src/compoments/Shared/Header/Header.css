@@ -32,4 +32,6 @@ nav ul li a {
     background-color: #805FA8;
     padding: 10px 25px;
     border-radius: 20px;
+    border: none;
+    color: white;
 }

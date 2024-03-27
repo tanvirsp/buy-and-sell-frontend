@@ -27,12 +27,12 @@ h2 {
 
 h3 {
   font-size:  28px;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 h4 {
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 30px;
  
 }
@@ -40,7 +40,7 @@ h4 {
 
 h5 {
   font-size: 19px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 25px;
  
 }
@@ -52,6 +52,19 @@ h6 {
 
 }
 
+.section-title {
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 20px;
+  font-size: 35px;
+
+}
+
+.section-title span {
+  font-weight: 600;
+}
+
+
 
 p {
   padding: 0;
@@ -59,6 +72,9 @@ p {
   color: #5a5a5a !important;
   font-family: "Martel Sans", sans-serif;
 }
+
+
+
 
 
 small {

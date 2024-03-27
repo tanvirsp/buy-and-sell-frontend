@@ -8,16 +8,7 @@
 }
 
 
-.section-title {
-    text-transform: uppercase;
-    font-weight: 300;
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-.section-title span {
-    font-weight: 600;
-}
 
 .category {
     display: flex;

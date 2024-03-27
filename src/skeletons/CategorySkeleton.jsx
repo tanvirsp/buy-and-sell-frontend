@@ -6,7 +6,7 @@ const CategorySkeleton = () => {
     return (
         <section className='container'>
             <div className='category-section'>
-                <h3 className='section-title'>Browse items by <span>category</span></h3>
+                <h3 className='section-title text-center'>Browse items by <span>category</span></h3>
 
                 {/* category  started */}
                 <div className='row'>
