@@ -1,0 +1,23 @@
+footer {
+    background-color: #805FA8;
+    padding: 65px 0;
+    color: white;
+}
+
+.footer-logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+.quick-links {
+    list-style-type:disc;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.quick-links li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+
+}

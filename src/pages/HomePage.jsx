@@ -3,6 +3,7 @@ import CategorySection from "../compoments/HomePage/CategorySection/CategorySect
 import HeroSection from "../compoments/HomePage/HeroSection/HeroSection";
 import CategoryStore from "../store/CategoryStore";
 import StartMarketing from "../compoments/HomePage/StartMarketing/StartMarketing";
+import AboutSection from "../compoments/HomePage/AboutSection/AboutSection";
 
 
 
@@ -25,6 +26,7 @@ console.log(Categories);
         <HeroSection />
         <CategorySection />
         <StartMarketing />
+        <AboutSection />
          
         </>
     );

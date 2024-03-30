@@ -1,0 +1,9 @@
+.about-section {
+    background-color: white;
+    padding: 25px;
+    margin: 35px 0;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow:  0 0 7px 0 rgba(0, 0, 0, 0.12);
+}

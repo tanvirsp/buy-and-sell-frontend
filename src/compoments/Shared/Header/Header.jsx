@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -14,6 +15,9 @@ const Header = () => {
                     </li>
                     <li>
                         <a href="#">Login</a>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard">Dashboard </NavLink>
                     </li>
                     <li>
                         <a className='btn-post' href="#">Post Your Ad</a>
