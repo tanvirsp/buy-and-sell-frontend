@@ -5,6 +5,8 @@ import HomePage from "../../pages/HomePage";
 import DashboardLayout from "../../layout/DashboardLayout";
 import DashboardPage from "../../pages/DashboardPage";
 import CreateAd from "../../compoments/Dashboard/CreateAd/CreateAd";
+import LoginPage from "../../pages/LoginPage";
+import SignupPage from "../../pages/SignupPage";
 
 
 
@@ -16,6 +18,16 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <HomePage />
+               
+            },
+            {
+                path: "/login",
+                element: <LoginPage />
+               
+            },
+            {
+                path: "/signup",
+                element: <SignupPage />
                
             },
         

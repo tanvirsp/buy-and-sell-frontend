@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './CreateAd.css';
+import AdStore from '../../../store/AdStore';
+import CategoryStore from '../../../store/CategoryStore';
 
 const CreateAd = () => {
     const [divisions, setDivisions] = useState([]);
@@ -8,7 +10,15 @@ const CreateAd = () => {
     const[district, setDistrict] = useState("");
 
 
-    const [adData, setAdData] = useState({});
+    const [adData, setAdData] = useState({
+        images: []
+    });
+    
+
+
+    //Global Store
+    const {ImageUploadRequest} = AdStore();
+    const {Categories, CategoryRequest} = CategoryStore()
     
 
 
@@ -18,6 +28,10 @@ const CreateAd = () => {
             const res = await fetch("https://bdapis.com/api/v1.1/divisions")
             const data = await res.json();
             setDivisions(data.data)
+
+            Categories === null && await CategoryRequest()
+
+
 
         })()
     } ,[]);
@@ -33,8 +47,28 @@ const CreateAd = () => {
         })()
     } ,[selectedDivision]);
 
+   
 
-    
+    const handleImageUpload = async(e) =>{
+        e.preventDefault();
+ 
+        const formData = new FormData();
+        formData.append("image", e.target.files[0]);
+
+        const result = await ImageUploadRequest(formData);
+        if(result.status){
+            setAdData({
+                ...adData,
+                images: [...adData.images, result.data.filename ]
+        
+            })
+        }
+       
+        
+    };
+
+
+
     const handleSelectDivision = async(e)=>{
         setSelectedDivision(e);
         setAdData({
@@ -100,8 +134,8 @@ const CreateAd = () => {
             <div className="row">
                 <div className="col-md-3 mt-4">
                     <label>Select Division</label>
-                    <select onChange={async(e) => handleSelectDivision(e.target.value)} className="form-select" aria-label="Default select example">
-                        <option selected>Select  Division</option>
+                    <select  defaultValue=""  onChange={async(e) => handleSelectDivision(e.target.value)} className="form-select" aria-label="Default select example">
+                        <option value="" disabled >Select  Division</option>
                             {
                                 divisions && divisions.map( (item, index) => <option key={index} value={item["_id"]}>{item["division"]}</option> )
                             }
@@ -110,8 +144,8 @@ const CreateAd = () => {
                 </div>
                 <div className="col-md-4 mt-4">
                     <label>Select District</label>
-                    <select onChange={async(e) => handleSelectDistrict(e.target.value)} className="form-select" aria-label="Default select example">
-                        <option selected>Select  District</option>
+                    <select  defaultValue=""  onChange={async(e) => handleSelectDistrict(e.target.value)} className="form-select" aria-label="Default select example">
+                        <option value="" disabled >Select  District</option>
                             {
                                 divisionData && divisionData.map( (item, index) => <option key={index} value={item["_id"]}>{item["district"]}</option> )
                             }
@@ -120,8 +154,8 @@ const CreateAd = () => {
                 </div>
                 <div className="col-md-4 mt-4">
                     <label>Select Upazilla</label>
-                    <select onChange={async(e) =>handleSelectUpazila(e.target.value)}  className="form-select" aria-label="Default select example">
-                        <option selected>Select  Upazilla</option>
+                    <select  defaultValue=""  onChange={async(e) =>handleSelectUpazila(e.target.value)}  className="form-select" aria-label="Default select example">
+                        <option value="" disabled >Select  Upazilla</option>
                             {
                                upazilla?.upazilla?.map( (item, index) => <option key={index} value={item}>{item}</option>  )
                             }
@@ -145,24 +179,54 @@ const CreateAd = () => {
                         <input onChange={async() => handleFormData("negotiable", "no")}  type="radio"  name="negotiable"  id="no" className='ms-3' />
                         <label className='form-check-label ps-2' htmlFor="no">No</label>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <label className='form-label' >Brand</label> 
                     <input  onBlur={async(e) => handleFormData("brand", e.target.value)}  className='form-control' type="text"  />
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <label className='form-label' >Model</label> 
                     <input  onBlur={async(e) => handleFormData("model", e.target.value)}  className='form-control' type="text"  />
                 </div>
+                <div className="col-md-2">
+                    <label>Select Category</label>
+                    <select defaultValue=""  onChange={async(e) =>handleFormData("categoryID", e.target.value)}  className="form-select" aria-label="Default select example">
+                        <option  value="" disabled >Select  Category</option>
+                            {
+                               Categories?.map( (item, index) => <option key={index} value={item["_id"]}>{item["name"]}</option>  )
+                            }
+                    </select>
+                    
+                </div>
+                
             </div>
             <div className="row">
                 <div className="col-12">
                     <label className='form-label' >Description</label> 
                     <textarea  onBlur={async(e) => handleFormData("description", e.target.value)}  className='form-control' name="" id="" cols="30" rows="10"></textarea>
                 </div>
-                <div className="col-12 mt-3">
-                    <input type="file" name="" id="" />
+            </div>
+            <div className="row mt-3">
+                <div className="col-md-3">
+                    <h6>Upload your images</h6>
+                    <div className='d-flex align-items-center'>
+                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file" /><span className='btn btn-danger ms-2'>Delete</span>
+                    </div>
+                    <div className='d-flex align-items-center'>
+                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
+                    </div>
+                    <div className='d-flex align-items-center'>
+                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
+                    </div>
+                    <div className='d-flex align-items-center'>
+                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
+                    </div>
+                    <div className='d-flex align-items-center'>
+                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
+                    </div>
+                    
                 </div>
             </div>
+            
 
 
             <button onClick={sendFormData}  className='btn-post mt-4'>Create AD</button>

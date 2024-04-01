@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
     return (
         <header className='container' >
-            <div><h4 className='logo'>BUY & SELL</h4></div>
+            <div><Link to="/"><h4 className='logo'>BUY & SELL</h4></Link></div>
             <nav>
                 <ul>
                     <li>
@@ -14,7 +14,7 @@ const Header = () => {
                         <a href="#">About US</a>
                     </li>
                     <li>
-                        <a href="#">Login</a>
+                    <NavLink to="/login">Login </NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard">Dashboard </NavLink>
