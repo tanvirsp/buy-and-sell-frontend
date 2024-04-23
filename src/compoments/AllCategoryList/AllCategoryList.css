@@ -1,0 +1,17 @@
+.category-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    
+}
+
+.category-list  li {
+    color: rgba(128, 128, 128, 0.863);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 0;
+}
+
+.category-list li:hover {
+    color: black
+}

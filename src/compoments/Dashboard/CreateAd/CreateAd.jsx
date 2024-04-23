@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import './CreateAd.css';
 import AdStore from '../../../store/AdStore';
 import CategoryStore from '../../../store/CategoryStore';
+import { RxCross1 } from "react-icons/rx";
+import toast from 'react-hot-toast';
+
+
 
 const CreateAd = () => {
     const [divisions, setDivisions] = useState([]);
@@ -9,15 +13,14 @@ const CreateAd = () => {
     const [divisionData, setDivisionData] = useState([]);
     const[district, setDistrict] = useState("");
 
-
-    const [adData, setAdData] = useState({
-        images: []
-    });
     
 
+    const [images, setImages] = useState([])
+    const [adData, setAdData] = useState({});
+    
 
     //Global Store
-    const {ImageUploadRequest} = AdStore();
+    const { MultiImageUploadRequest, CreateAdRequest} = AdStore();
     const {Categories, CategoryRequest} = CategoryStore()
     
 
@@ -49,23 +52,38 @@ const CreateAd = () => {
 
    
 
-    const handleImageUpload = async(e) =>{
-        e.preventDefault();
- 
-        const formData = new FormData();
-        formData.append("image", e.target.files[0]);
 
-        const result = await ImageUploadRequest(formData);
-        if(result.status){
-            setAdData({
-                ...adData,
-                images: [...adData.images, result.data.filename ]
-        
+    const handleImageUpload = async(e) =>{
+
+        const selectedFiles = e.target.files;
+        const selectedFilesArray = Array.from(selectedFiles);
+
+        if(selectedFilesArray.length > 5){
+            toast.error("Miximum 5 Images you can upload")
+        } else {
+            const formData = new FormData();
+            selectedFilesArray.map( data =>{
+                formData.append("image", data);
             })
-        }
-       
         
+            const result = await MultiImageUploadRequest(formData);
+            if(result.status){
+                const fileName = result.data.map(file => file.filename );
+                setImages(fileName);
+            }   
+        }
+
+
     };
+
+
+
+
+    const handleDeleteImage = index =>{
+        images.splice(index,1);
+        setImages([...images]);
+    }
+    
 
 
 
@@ -107,7 +125,16 @@ const CreateAd = () => {
     }
 
     const sendFormData = async()=>{
-        console.log(adData);
+        const allData = {
+            ...adData,
+            images: images
+        };
+        const result = await CreateAdRequest(allData);
+        if(result.status ==="success"){
+            toast.success(result.message)
+        } else {
+            toast.error("Something went wrong!!")
+        }
     }
 
 
@@ -132,7 +159,7 @@ const CreateAd = () => {
 
             </div>
             <div className="row">
-                <div className="col-md-3 mt-4">
+                <div className="col-md-4 mt-4">
                     <label>Select Division</label>
                     <select  defaultValue=""  onChange={async(e) => handleSelectDivision(e.target.value)} className="form-select" aria-label="Default select example">
                         <option value="" disabled >Select  Division</option>
@@ -199,6 +226,16 @@ const CreateAd = () => {
                 </div>
                 
             </div>
+            <div className="row my-3">
+                <div className="col-md-6">
+                    <label> Seller Name</label>
+                    <input  className='form-control' type="text" />
+                </div>
+                <div className="col-md-6">
+                    <label> Contact Number</label>
+                    <input onBlur={async(e) => handleFormData("contactNumber", e.target.value)} className='form-control' type="tel" />
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <label className='form-label' >Description</label> 
@@ -207,26 +244,33 @@ const CreateAd = () => {
             </div>
             <div className="row mt-3">
                 <div className="col-md-3">
-                    <h6>Upload your images</h6>
-                    <div className='d-flex align-items-center'>
-                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file" /><span className='btn btn-danger ms-2'>Delete</span>
-                    </div>
-                    <div className='d-flex align-items-center'>
-                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
-                    </div>
-                    <div className='d-flex align-items-center'>
-                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
-                    </div>
-                    <div className='d-flex align-items-center'>
-                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
-                    </div>
-                    <div className='d-flex align-items-center'>
-                        <input onChange={handleImageUpload} name="image"  className='form-control my-2' type="file"  /><span className='btn btn-danger ms-2'>Delete</span>
-                    </div>
-                    
+                <label className='file-label'>+ Add Images  <br /> <span>up to 5 images</span>
+                    <input type="file"   name="image"onChange={handleImageUpload} 
+                    multiple
+                    />
+                </label>
+
+
                 </div>
             </div>
+            <div className="row mt-3">
+                {
+                    images.length> 0 && images.map( (item, index) => {
+                        return(
+                        <div  key={index}  className="col-md-2">
+                            <div className='uploaded-img'> 
+                            <div className='img-overlay'></div>
+                                <img  src={`http://localhost:5000/${item}`} alt="image"  crossOrigin ="anonymous"/>
+                                <span onClick={()=>handleDeleteImage(index)} className='cross-icon'> <RxCross1 /></span>
+                            </div>
+                        </div>
+                        )
+                        
+                    }  )
+                }
             
+      
+            </div>
 
 
             <button onClick={sendFormData}  className='btn-post mt-4'>Create AD</button>

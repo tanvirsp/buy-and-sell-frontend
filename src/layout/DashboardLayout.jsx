@@ -27,7 +27,7 @@ const DashboardLayout = () => {
                 <div  className={ show ?  "admin-nav" :  "admin-nav d-none" } >  
                     <ul className="admin-nav-bar">
                         <li><Link to="/dashboard">  <FaRegNewspaper /> Dashboard</Link></li>
-                        <li><Link>  <FaRegNewspaper /> My Ads</Link></li>
+                        <li><Link to="/dashboard/my-ads">  <FaRegNewspaper /> My Ads</Link></li>
                         <li><Link to="/dashboard/create-ad"> <TbNewSection /> Create Ad</Link></li>
                         <li><Link> <FaRegUser  /> Profile</Link></li>
                         <li><Link> <FaRegHeart /> Favourite</Link></li>

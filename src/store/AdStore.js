@@ -9,6 +9,54 @@ const AdStore = create( (set)=>({
         return res["data"];
     },
 
+    MultiImageUploadRequest: async(data) =>{
+        const res = await axios.post(`http://localhost:5000/api/v1/file-upload-all`, data);
+        return res["data"];
+    },
+
+    CreateAdRequest: async(data) =>{
+        const res = await axios.post(`http://localhost:5000/api/v1/ad`, data, {withCredentials: true});
+        return res["data"];
+    },
+
+
+    MyAds : null,
+    MyAdsRequest: async() =>{
+        const res = await axios.get(`http://localhost:5000/api/v1/my-ads`,  {withCredentials: true});
+        if(res.data["status"] ==="success"){
+            set({MyAds: res.data["data"] })
+        }
+    },
+
+    AdDetails : null,
+    AdDetailsRequest: async(id) =>{
+        set({AdDetails: null })
+        const res = await axios.get(`http://localhost:5000/api/v1/ad/${id}`);
+        if(res.data["status"] ==="success"){
+            set({AdDetails: res.data["data"][0] })
+        }
+    },
+
+    DeleteAdRequest: async(id) =>{
+        const res = await axios.delete(`http://localhost:5000/api/v1/ad/${id}`);
+        return res["data"]
+    },
+
+    UpdateAdRequest: async(id, data) =>{
+        const res = await axios.post(`http://localhost:5000/api/v1/update-ad/${id}`, data, {withCredentials: true});
+        return res["data"]
+    },
+
+    AdByCategory : null,
+    AdByCategoryRequest: async(id) =>{
+        set({AdByCategory: null })
+        const res = await axios.get(`http://localhost:5000/api/v1/ad-by-category/${id}`);
+        if(res.data["status"] ==="success"){
+            set({AdByCategory: res.data.data })
+        }
+    },
+
+
 
 
 

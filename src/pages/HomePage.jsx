@@ -9,16 +9,14 @@ import AboutSection from "../compoments/HomePage/AboutSection/AboutSection";
 
 
 const HomePage = () => {
-    const {CategoryRequest, Categories} = CategoryStore();
+    const {CategoryRequest} = CategoryStore();
     useEffect(()=>{
         (async()=>{
             await CategoryRequest()
         })()
 
-
-
     } , [])
-console.log(Categories);
+
 
 
     return (

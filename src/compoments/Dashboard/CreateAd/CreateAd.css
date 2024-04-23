@@ -1,0 +1,57 @@
+.uploaded-img {
+    position: relative;
+}
+
+.uploaded-img img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    
+}
+
+.img-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.679);
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
+.cross-icon {
+    font-size: 65px;
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    cursor: pointer;
+}
+
+
+
+
+.file-label{
+    /* margin: 0 auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dotted black;
+    border-radius: 20px;
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+    font-size: large;
+  }
+  
+ .file-label span {
+    font-weight: 200;
+    font-size: small;
+    padding-top: 0.5rem;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }

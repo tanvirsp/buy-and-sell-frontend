@@ -7,6 +7,10 @@ import DashboardPage from "../../pages/DashboardPage";
 import CreateAd from "../../compoments/Dashboard/CreateAd/CreateAd";
 import LoginPage from "../../pages/LoginPage";
 import SignupPage from "../../pages/SignupPage";
+import MyAds from "../../compoments/Dashboard/MyAds/MyAds";
+import AdDetails from "../../compoments/AdDetails/AdDetails";
+import EditAd from "../../compoments/Dashboard/EditAd/EditAd";
+import ProductByCategoryPage from "../../pages/ProductByCategoryPage";
 
 
 
@@ -30,6 +34,16 @@ const router = createBrowserRouter([
                 element: <SignupPage />
                
             },
+            {
+                path: "/details/:id",
+                element: <AdDetails />
+               
+            },
+            {
+                path: "/product-by-category/:categoryID",
+                element: <ProductByCategoryPage />
+               
+            },
         
         
            
@@ -49,6 +63,14 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/create-ad",
                 element: <CreateAd />
+            },
+            {
+                path: "/dashboard/my-ads",
+                element: <MyAds />
+            },
+            {
+                path: "/dashboard/edit-ad/:id",
+                element: <EditAd />
             },
 
         ]

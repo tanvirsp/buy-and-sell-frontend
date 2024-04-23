@@ -1,0 +1,12 @@
+.details-container {
+    background-color: white;
+    padding: 35px; 
+    margin: 35px 0;
+    border-radius: 20px;
+
+}
+
+.product-info {
+    border-top: 1px solid rgba(58, 57, 57, 0.377);
+    padding-top: 25px;
+}
