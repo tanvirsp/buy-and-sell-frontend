@@ -36,6 +36,8 @@ const LoginForm = () => {
             navigate("/");
             await ProfileRequest()
 
+        }else {
+            toast.error(result.message);
         }
        
 
@@ -57,7 +59,7 @@ const LoginForm = () => {
 
                     <input className='btn-post w-100 mt-2' type="submit" value="LOGIN" />
                 </form>
-                <p className='mt-2'> <Link to="/">Forget password?</Link> </p>
+                <p className='mt-2'> <Link to="/reset-form">Forget password?</Link> </p>
                 <p className='mt-2 '>Need an account? <Link to="/signup">Sign Up</Link> </p>
                 
             </div>

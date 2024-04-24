@@ -32,14 +32,3 @@
 }
 
 
-.search-bar {
-    position: relative;
-}
-
-.search-bar svg {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 50px;
-    color: #805FA8
-}

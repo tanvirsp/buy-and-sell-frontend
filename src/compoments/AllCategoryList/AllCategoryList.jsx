@@ -25,7 +25,7 @@ const AllCategoryList = () => {
             <h6 className='category-title'>All Categories :</h6>
             <ul className='category-list'>
                 {
-                    Categories?.map( (item, index) => <li onClick={()=> navigate(`/product-by-category/${item["_id"]}`)} key={index}>{item.name}</li> )
+                    Categories?.map( (item, index) => <li onClick={()=> navigate(`/ad-by-category/${item["_id"]}`)} key={index}>{item.name}</li> )
                 }
 
             </ul>

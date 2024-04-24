@@ -23,7 +23,7 @@ const CategorySection = () => {
                         Categories.length > 0 ? 
                             Categories.map( (item, index) => {
                                 return(
-                                    <div onClick={()=> navigate(`/product-by-category/${item["_id"]}`)} key={index} className="col-md-3">
+                                    <div onClick={()=> navigate(`/ad-by-category/${item["_id"]}`)} key={index} className="col-md-3 ">
                                         <div className='category'>
                                             <img src={item["image"]} alt="Call Icon" />
                                             <div>

@@ -6,11 +6,12 @@ import PageTitle from "../compoments/PageTitle/PageTitle";
 import AllCategoryList from "../compoments/AllCategoryList/AllCategoryList";
 import CategoryStore from "../store/CategoryStore";
 import NoProductFound from "../compoments/NoProductFound/NoProductFound";
+import SearchBar from "../compoments/Shared/SearchBar/SearchBar";
 
 
-const ProductByCategoryPage = () => {
+const AdByCategoryPage = () => {
     const {categoryID} = useParams();
-    const {AdByCategoryRequest, AdByCategory} = AdStore();
+    const {AdByCategoryRequest, Ads} = AdStore();
     const {SingleCategoryRequest} = CategoryStore();
 
     const [catInfo, setCatInfo] = useState({})
@@ -26,37 +27,32 @@ const ProductByCategoryPage = () => {
     } ,[categoryID])
 
 
-    if(AdByCategory === null){
+    if(Ads === null){
         return <h4>Loading...</h4>
     }
 
     return (
         <section>
+            <PageTitle title={catInfo?.data?.name} />
+
            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <PageTitle title={catInfo?.data?.name} />
-                    </div>
-                </div>
                <div className="row ">
                     <div className="col-md-9">
                         {
-                           AdByCategory.length === 0 ? <NoProductFound /> :
+                           Ads.length === 0 ? <NoProductFound /> :
                            <AdsContainer />
                         }
-                       
                     </div>
                     <div className="col-md-3">
                         <div className="bg-white p-4 rounded-4">
+                            <SearchBar /> <br />
                             <AllCategoryList />
                         </div>
-                            
                     </div>
                </div>
-
            </div>
         </section>
     );
 };
 
-export default ProductByCategoryPage;
+export default AdByCategoryPage;

@@ -1,8 +1,14 @@
 .page-title {
-    background-color: #805FA8 ;
+    background-image: linear-gradient(90deg, #805fa8d7, #805fa8d7), url('../../assets//images/bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-transform: uppercase;
     color: white;
     text-align: center;
-    padding: 45px;
-    margin: 20px 0;
-    border-radius: 25px;
+    margin-top: -110px;
+    height: 350px;
+    padding-top: 180px;
+    margin-bottom: 45px;
+    
 }

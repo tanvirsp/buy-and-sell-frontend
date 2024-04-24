@@ -5,15 +5,22 @@ import { useNavigate } from 'react-router-dom';
 
 
 const AdsContainer = () => {
-    const {AdByCategory} = AdStore();
+
+    
+
+    const {Ads} = AdStore();
     const navigate = useNavigate();
+
+    if(Ads === null){
+        return <h3>Loading...</h3>
+    }
 
 
 
     return (
         <div>
             {
-                AdByCategory.map( (item, index) =>{
+                Ads.map( (item, index) =>{
                     return(
                         <div onClick={()=> navigate(`/details/${item._id}`)} className="singleAd bg-white p-4 rounded-4" key={index}> 
                             <div>

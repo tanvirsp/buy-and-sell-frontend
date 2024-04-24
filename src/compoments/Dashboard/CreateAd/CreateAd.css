@@ -52,6 +52,6 @@
     padding-top: 0.5rem;
   }
   
-  input[type="file"] {
+  .file-label input[type="file"] {
     display: none;
   }

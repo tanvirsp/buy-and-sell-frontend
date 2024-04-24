@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Navigate, useLocation } from 'react-router-dom';
+import UserStore from '../../store/UserStore';
 
 
 
 const PrivateRoute = ({children}) => {
-    const user = true
+    const {isLogin} = UserStore();
+ 
+
     
     
     const location = useLocation();
 
-    if(!user){
+    if(!isLogin()){
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 

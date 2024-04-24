@@ -35,4 +35,9 @@ nav ul li a {
     border-radius: 20px;
     border: none;
     color: white;
+    cursor: pointer;
+}
+
+.btn-post:hover {
+    background-color: #9370be;
 }

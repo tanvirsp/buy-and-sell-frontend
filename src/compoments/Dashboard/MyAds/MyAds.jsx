@@ -60,7 +60,7 @@ const MyAds = () => {
     }
     
     return (
-        <div>
+        <div className='bg-white p-5 rounded-2'>
             <h1>My Ads</h1>
             <Table striped bordered hover className="align-middle">
                 <thead>

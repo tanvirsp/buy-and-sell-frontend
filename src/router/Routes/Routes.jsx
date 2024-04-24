@@ -10,7 +10,15 @@ import SignupPage from "../../pages/SignupPage";
 import MyAds from "../../compoments/Dashboard/MyAds/MyAds";
 import AdDetails from "../../compoments/AdDetails/AdDetails";
 import EditAd from "../../compoments/Dashboard/EditAd/EditAd";
-import ProductByCategoryPage from "../../pages/ProductByCategoryPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Profile from "../../compoments/Dashboard/Profile/Profile";
+import ResetForm from "../../compoments/ResetForm/ResetForm";
+import ResetVerifyOtpForm from "../../compoments/ResetVerifyOtpForm/ResetVerifyOtpForm";
+import ChangePasswordForm from "../../compoments/ChangePasswordForm/ChangePasswordForm";
+import AdByCategoryPage from "../../pages/AdtByCategoryPage";
+import SearchAdPage from "../../pages/SearchAdPage";
+import Users from "../../compoments/Dashboard/Users/Users";
+import AllAds from "../../compoments/Dashboard/AllAds/AllAds";
 
 
 
@@ -40,8 +48,28 @@ const router = createBrowserRouter([
                
             },
             {
-                path: "/product-by-category/:categoryID",
-                element: <ProductByCategoryPage />
+                path: "/ad-by-category/:categoryID",
+                element: <AdByCategoryPage />
+               
+            },
+            {
+                path: "/reset-form",
+                element: <ResetForm />
+               
+            },
+            {
+                path: "/reset-verify-otp",
+                element: <ResetVerifyOtpForm />
+               
+            },
+            {
+                path: "/change-password-form",
+                element: <ChangePasswordForm />
+               
+            },
+            {
+                path: "/by-keyword/:keyword",
+                element: <SearchAdPage />
                
             },
         
@@ -54,7 +82,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard", 
-        element: <DashboardLayout />,
+        element: <PrivateRoute> <DashboardLayout /> </PrivateRoute>,
         children: [
             {
                 path: "/dashboard",
@@ -71,6 +99,18 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/edit-ad/:id",
                 element: <EditAd />
+            },
+            {
+                path: "/dashboard/profile",
+                element: <Profile />
+            },
+            {
+                path: "/dashboard/users",
+                element: <Users />
+            },
+            {
+                path: "/dashboard/all-ads",
+                element: <AllAds />
             },
 
         ]

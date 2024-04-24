@@ -97,6 +97,18 @@ a {
 }
 
 
+.page-item.active a {
+  background-color: #805fa8 !important;
+  color: white !important;
+  border: none !important
+}
+
+
+a.page-link {
+  color: #805fa8 !important;
+}
+
+
 
 /* width */
 ::-webkit-scrollbar {

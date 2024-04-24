@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const AdStore = create( (set)=>({
     
+    Ads:null,
 
     ImageUploadRequest: async(data) =>{
         const res = await axios.post(`http://localhost:5000/api/v1/file-upload`, data);
@@ -47,12 +48,26 @@ const AdStore = create( (set)=>({
         return res["data"]
     },
 
-    AdByCategory : null,
+   
     AdByCategoryRequest: async(id) =>{
         set({AdByCategory: null })
         const res = await axios.get(`http://localhost:5000/api/v1/ad-by-category/${id}`);
         if(res.data["status"] ==="success"){
-            set({AdByCategory: res.data.data })
+            set({Ads: res.data.data })
+        }
+    },
+
+
+    
+    SearchKeyword:"",
+    SearchKeywordRequest : async (keyword)=>{
+        set({SearchKeyword: keyword});
+    },
+
+    SearchProductRequest: async(pageNumber, perPage, keyword) =>{
+        const result = await axios.get(`http://localhost:5000/api/v1/search/${pageNumber}/${perPage}/${keyword}`);
+        if(result.data['status'] ==="success"){
+            set({Ads: result["data"]["data"]})
         }
     },
 

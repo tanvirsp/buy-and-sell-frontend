@@ -18,8 +18,14 @@
     justify-content: center;
     border-radius: 100px;
     box-shadow:  0 0 7px 0 rgba(98, 97, 97, 0.099);
-    margin-top: 20px
+    margin-top: 20px;
+    cursor: pointer;
 
+
+}
+
+.category:hover {
+    box-shadow:  0 0 0px 0 rgba(98, 97, 97, 0.099);
 }
 
 .category img {
